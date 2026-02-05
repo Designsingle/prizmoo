@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tienda de Playeras</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+   
+  </style>
+</head>
+<body>
+
+  <!-- =========================================
+       MODULO SUPERIOR (HAMBURGUESA | LOGO | CARRITO)
+       ========================================= -->
+  <header class="top-bar">
+    <div class="hamburger">☰</div>
+    <div class="logo">LOGO</div>
+    <div class="cart">🛒<span class="cart-count">0</span></div>
+  </header>
+
+<!-- MODAL HAMBURGUESA 16:9 -->
+<div class="hamburger-modal" id="hamburgerModal">
+  <div class="hamburger-modal-content">
+    <span class="close-hamburger">&times;</span>
+    <div class="modal-body">
+      <h2>Título de la ventana</h2>
+      <p>Contenido libre: xxxxxx</p>
+    </div>
+  </div>
+</div>
+
+  
+<!-- =========================================
+     PAGINAS 1
+     ========================================= -->
+<div class="page page-1 active" id="page1">
+
+    <section class="timeline secciones glass">
+
+        <section class="card perfil">
+            <div class="foto-perfil">
+<div class="product-img" style="position:relative; display:flex; overflow:hidden;">
+  <!-- Contenedor de imágenes -->
+  <div class="image-track" style="display:flex; transition: transform 0.3s ease;">
+    <img src="imagenes/cdmx3.jpeg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
+    <img src="imagenes/cdmx2.jpeg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
+    <img src="imagenes/cdmx1.jpeg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
+    <img src="imagenes/PRUEBA5.jpg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
+    <img src="imagenes/PRUEBA6.jpg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0;">
+  </div>
+
+  <!-- Botones de navegación -->
+  <div class="nav-icons">
+    <span id="prev-img">‹</span>
+    <span id="next-img">›</span>
+  </div>
+</div>
+
+            </div>
+            <h1>CIUDAD DE MEXICO</h1>
+            <p class="subtitulo">VIAJE FOTOGRAFICO</p>
+        </section>
+
+        <div style="text-align:center">
+            <a href="#" id="goPage2" class="btn-clase">Comencemos</a>
+        </div>
+
+        <div style="height: 5vh;"></div>
+    </section>
+</div>
+
+<!-- CSS para los botones -->
+<style>
+.product-img {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.image-track img {
+  flex-shrink: 0;
+  width: 100%;           /* ocupa todo el contenedor */
+  aspect-ratio: 1 / 1;   /* fuerza proporción cuadrada tipo Instagram */
+  object-fit: cover;      /* mantiene el contenido centrado */
+  margin-right: 3px;      /* separación entre imágenes */
+  border-radius: 20px;     /* opcional, bordes suaves */
+}
+
+/* Botones de navegación */
+.nav-icons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.product-img:hover .nav-icons {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav-icons span {
+  pointer-events: all;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.nav-icons span:hover {
+  background: rgba(0,0,0,0.1);
+}
+</style>
+
+
+<!-- JS para navegar entre 5 imágenes -->
+<script>
+const track = document.querySelector('.image-track');
+const images = document.querySelectorAll('.image-track img');
+let index = 0;
+const visibleCount = 1; // cuántas imágenes mostrar a la vez (puedes cambiar a 2 o 3 si quieres)
+
+document.getElementById('prev-img').addEventListener('click', () => {
+  index = Math.max(index - 1, 0);
+  track.style.transform = `translateX(-${index * (images[0].clientWidth + 5)}px)`;
+});
+
+document.getElementById('next-img').addEventListener('click', () => {
+  index = Math.min(index + 1, images.length - visibleCount);
+  track.style.transform = `translateX(-${index * (images[0].clientWidth + 5)}px)`;
+});
+
+</script>
+
+
+<!-- =========================================
+     PAGE 2
+     ========================================= -->
+<div class="page page-2" id="page2">
+  <section class="products-grid">
+    
+    <!-- Producto 1 -->
+    <div class="product-card" data-images="PRUEBA100.jpeg,PRUEBA101.jpeg,PRUEBA102.jpeg,PRUEBA103.jpeg,PRUEBA104.jpeg">
+      <div class="product-img">
+        <div class="image-track">
+          <img src="imagenes/PRUEBA100.jpeg" alt="Producto 1">
+          <img src="imagenes/PRUEBA101.jpeg" alt="Producto 1">
+          <img src="imagenes/PRUEBA102.jpeg" alt="Producto 1">
+          <img src="imagenes/PRUEBA103.jpeg" alt="Producto 1">
+          <img src="imagenes/PRUEBA104.jpeg" alt="Producto 1">
+        </div>
+        <div class="nav-icons">
+          <span class="prev">‹</span>
+          <span class="next">›</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <p class="description">PLAYERA 1</p>
+        <p class="price">$200</p>
+      </div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="product-card" data-images="apaad1.jpeg,apaad2.jpeg,apaad3.jpeg,apaad4.jpeg,apaad5.jpeg">
+      <div class="product-img">
+        <div class="image-track">
+          <img src="imagenes/apaad1.jpeg" alt="Producto 2">
+          <img src="imagenes/apaad2.jpeg" alt="Producto 2">
+          <img src="imagenes/apaad3.jpeg" alt="Producto 2">
+          <img src="imagenes/apaad4.jpeg" alt="Producto 2">
+          <img src="imagenes/apaad5.jpeg" alt="Producto 2">
+        </div>
+        <div class="nav-icons">
+          <span class="prev">‹</span>
+          <span class="next">›</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <p class="description">PLAYERA 2</p>
+        <p class="price">$200</p>
+      </div>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="product-card" data-images="apaad6.jpeg,apaad7.jpeg,apaad8.jpeg,apaad9.jpeg,apaad10.jpeg">
+      <div class="product-img">
+        <div class="image-track">
+          <img src="imagenes/apaad6.jpeg" alt="Producto 3">
+          <img src="imagenes/apaad7.jpeg" alt="Producto 3">
+          <img src="imagenes/apaad8.jpeg" alt="Producto 3">
+          <img src="imagenes/apaad9.jpeg" alt="Producto 3">
+          <img src="imagenes/apaad10.jpeg" alt="Producto 3">
+        </div>
+        <div class="nav-icons">
+          <span class="prev">‹</span>
+          <span class="next">›</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <p class="description">PLAYERA 3</p>
+        <p class="price">$200</p>
+      </div>
+    </div>
+
+    <!-- Producto 4 -->
+    <div class="product-card" data-images="apaad11.jpeg,apaad12.jpeg,apaad13.jpeg,apaad14.jpeg,apaad15.jpeg">
+      <div class="product-img">
+        <div class="image-track">
+          <img src="imagenes/PRUEBA2.jpg" alt="Producto 4">
+          <img src="imagenes/apaad12.jpeg" alt="Producto 4">
+          <img src="imagenes/apaad13.jpeg" alt="Producto 4">
+          <img src="imagenes/apaad14.jpeg" alt="Producto 4">
+          <img src="imagenes/apaad15.jpeg" alt="Producto 4">
+        </div>
+        <div class="nav-icons">
+          <span class="prev">‹</span>
+          <span class="next">›</span>
+        </div>
+      </div>
+      <div class="product-info">
+        <p class="description">PLAYERA 4</p>
+        <p class="price">$200</p>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+<!-- CSS minimalista y estilo Instagram solo para Page2 -->
+<style>
+.page-2 .product-img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.page-2 .image-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.page-2 .image-track img {
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 4 / 6; /* ahora 16:9 */
+  object-fit: cover;
+  margin-right: 5px;
+  border-radius: 12px;
+}
+
+.page-2 .nav-icons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.page-2 .product-img:hover .nav-icons {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.page-2 .nav-icons span {
+  pointer-events: all;
+  background: rgba(255,255,255,0.7);
+  color: black;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.page-2 .nav-icons span:hover {
+  background: rgba(0,0,0,0.1);
+}
+</style>
+
+<!-- JS para navegar las 5 imágenes de cada producto solo en Page2 -->
+<script>
+document.querySelectorAll('.page-2 .product-card').forEach(card => {
+  const track = card.querySelector('.image-track');
+  const images = card.querySelectorAll('.image-track img');
+  const prev = card.querySelector('.prev');
+  const next = card.querySelector('.next');
+  let index = 0;
+  const visibleCount = 1; // cuántas imágenes visibles a la vez
+
+  prev.addEventListener('click', e => {
+    e.stopPropagation();
+    index = Math.max(index - 1, 0);
+    track.style.transform = `translateX(-${index * (images[0].clientWidth + 5)}px)`;
+  });
+
+  next.addEventListener('click', e => {
+    e.stopPropagation();
+    index = Math.min(index + 1, images.length - visibleCount);
+    track.style.transform = `translateX(-${index * (images[0].clientWidth + 5)}px)`;
+  });
+});
+const modal = document.getElementById('productModal');
+const modalImg = document.getElementById('modalImg');
+const closeModal = document.querySelector('.close-modal');
+
+let currentImages = [];
+let imgIndex = 0;
+let cartCount = 0;
+</script>
+
+
+
+
+<!-- =========================================
+     PAGE 3
+     ========================================= -->
+<div class="page page-3" id="page3">
+
+  <!-- Aquí irían tus product-card de la page 3 -->
+  <!-- (NO los repito porque ya los tienes) -->
+
+</div>
+
+<!-- =========================================
+     MODAL PRODUCTO · PAGE 3
+     ========================================= -->
+<!-- =========================================
+     MODAL PRODUCTO · PAGE 3
+     ========================================= -->
+<div class="product-modal" id="productModal">
+  <div class="product-modal-box">
+
+    <span class="close-modal">✕</span>
+
+    <div class="modal-content">
+
+      <div class="modal-image">
+        <span class="prev">‹</span>
+        <img id="modalImg" alt="Imagen del producto">
+        <span class="next">›</span>
+      </div>
+
+      <div class="modal-info">
+        <h2 id="modalName">Nombre producto</h2>
+        <p class="modal-price" id="modalPrice">$0</p>
+
+        <p><strong>Tallas</strong></p>
+        <div class="sizes">
+          <span>S</span>
+          <span>M</span>
+          <span>L</span>
+          <span>XL</span>
+          <span>XXL</span>
+        </div>
+
+        <div class="qty-control">
+          <button id="minus">−</button>
+          <span id="qty">1</span>
+          <button id="plus">+</button>
+        </div>
+
+        <button id="addToCart">Agregar al carrito</button>
+
+        <p class="info-text">Información</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="product-card"
+     data-images="PRUEBA100.jpeg,PRUEBA101.jpeg"
+     data-name="PLAYERA 1"
+     data-price="$200">
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const modal = document.getElementById('productModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalName = document.getElementById('modalName');
+  const modalPrice = document.getElementById('modalPrice');
+  const closeModal = document.querySelector('.close-modal');
+  const addToCartBtn = document.getElementById('addToCart');
+
+  const qtyEl = document.getElementById('qty');
+  const minus = document.getElementById('minus');
+  const plus = document.getElementById('plus');
+
+  let currentImages = [];
+  let imgIndex = 0;
+  let cartCount = 0;
+  let qty = 1;
+
+  /* ===============================
+     ABRIR MODAL
+  =============================== */
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => {
+
+      if (!card.dataset.images) return;
+
+      currentImages = card.dataset.images
+        .split(',')
+        .map(img => 'imagenes/' + img);
+
+      imgIndex = 0;
+      qty = 1;
+      qtyEl.textContent = qty;
+
+      modalImg.src = currentImages[0];
+      modalName.textContent = card.dataset.name || '';
+      modalPrice.textContent = card.dataset.price || '';
+
+      modal.classList.add('active');
+    });
+  });
+
+  /* ===============================
+     CAMBIAR IMAGEN
+  =============================== */
+  modal.querySelector('.prev').onclick = e => {
+    e.stopPropagation();
+    imgIndex = (imgIndex - 1 + currentImages.length) % currentImages.length;
+    modalImg.src = currentImages[imgIndex];
+  };
+
+  modal.querySelector('.next').onclick = e => {
+    e.stopPropagation();
+    imgIndex = (imgIndex + 1) % currentImages.length;
+    modalImg.src = currentImages[imgIndex];
+  };
+
+  /* ===============================
+     CANTIDAD − / +
+  =============================== */
+  minus.onclick = () => {
+    if (qty > 1) {
+      qty--;
+      qtyEl.textContent = qty;
+    }
+  };
+
+  plus.onclick = () => {
+    qty++;
+    qtyEl.textContent = qty;
+  };
+
+  /* ===============================
+     CARRITO
+  =============================== */
+  addToCartBtn.onclick = () => {
+    cartCount += qty;
+    addToCartBtn.textContent = 'Agregar al carrito';
+    // aquí luego conectas el icono del carrito
+  };
+
+  /* ===============================
+     CERRAR MODAL
+  =============================== */
+  closeModal.onclick = () => modal.classList.remove('active');
+
+  modal.onclick = e => {
+    if (e.target === modal) modal.classList.remove('active');
+  };
+
+});
+</script>
+
+
+
+
+  <!-- =========================================
+       JS
+       ========================================= -->
+  <script>
+  const page1 = document.getElementById('page1');
+const page2 = document.getElementById('page2');
+
+// Función para mostrar una página y ocultar la otra
+function showPage(pageId) {
+  page1.classList.remove('active');
+  page2.classList.remove('active');
+
+  if (pageId === 'page1') page1.classList.add('active');
+  if (pageId === 'page2') page2.classList.add('active');
+}
+
+// Botón "Comencemos" - ir a Page2
+document.getElementById('goPage2').addEventListener('click', e => {
+  e.preventDefault();
+  showPage('page2');
+  // Guardamos la página actual en el historial
+  history.pushState({ page: 'page2' }, '', '');
+});
+
+// Escuchar cambios de historial (botón atrás/adelante)
+window.addEventListener('popstate', (event) => {
+  const state = event.state;
+  if (!state) {
+    // Si no hay estado, asumimos page1
+    showPage('page1');
+  } else {
+    showPage(state.page);
+  }
+});
+
+// Seleccionamos elementos
+const hamburger = document.querySelector('.top-bar .hamburger');
+const hamburgerModal = document.getElementById('hamburgerModal');
+const closeHamburger = document.querySelector('.close-hamburger');
+
+// Abrir modal al tocar hamburguesa
+hamburger.addEventListener('click', e => {
+    e.stopPropagation(); // evitar que el click se propague y cierre el modal inmediatamente
+    hamburgerModal.classList.add('active');
+});
+
+// Cerrar modal al tocar X
+closeHamburger.addEventListener('click', () => {
+    hamburgerModal.classList.remove('active');
+});
+
+// Cerrar modal al tocar fuera del contenido o en cualquier parte de la pantalla
+document.addEventListener('click', e => {
+    if (hamburgerModal.classList.contains('active') && !hamburgerModal.contains(e.target) && e.target !== hamburger) {
+        hamburgerModal.classList.remove('active');
+    }
+});
+ </script>
+
+
+
+
+</body>
+</html>
