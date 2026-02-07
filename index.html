@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Usa tu imaginacion</title>
+  <title>Tienda de Playeras</title>
   <link rel="stylesheet" href="css/estilos.css">
   <style>
    
@@ -31,8 +31,6 @@
         <li data-open="modal-nuevos">Proximamente</li>
         <li class="divider"></li>
         <li data-open="modal-playeras">Proximamente</li>
-        <p class="price">...</p>
-        <li class="divider"></li>
 
       </ul>
     </nav>
@@ -131,10 +129,7 @@
 </style>
 
 
-<!-- FIRMA INFERIOR -->
-<div class="footer-signature">
-  <p>© 2026 @prizmoo — Todos los derechos reservados.</p>
-</div>
+
 
   
 
@@ -175,7 +170,9 @@ let cartCount = 0;
        JS
        ========================================= -->
   <script>
-  
+  const page1 = document.getElementById('page1');
+
+
 // Seleccionamos elementos
 const hamburger = document.querySelector('.top-bar .hamburger');
 const hamburgerModal = document.getElementById('hamburgerModal');
@@ -201,6 +198,25 @@ document.addEventListener('click', e => {
  </script>
 
 <script>
+
+// ----------- MODAL GLOBAL PRODUCTO -----------
+const modalTitle = document.getElementById('modal-title');
+const modalBody = document.getElementById('modal-body');
+const closeBtn = modal.querySelector('.close');
+
+const productos = document.querySelectorAll('.page-2 .product-card');
+
+productos.forEach((producto, index) => {
+  producto.addEventListener('click', () => {
+    const firstImg = producto.querySelector('.image-track img').src;
+
+    modalImg.src = firstImg;
+    modalTitle.textContent = `Producto ${index + 1}`;
+    modalBody.textContent = `Contenido del producto ${index + 1}: xxxxxx`;
+
+    modal.style.display = 'flex';
+  });
+});
 
 // Cerrar modal al tocar la X
 closeBtn.addEventListener('click', () => {
