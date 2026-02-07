@@ -26,6 +26,7 @@ body {
   z-index: 100;
 }
 
+
 .hamburger, .logo, .cart {
   font-size: 1.3rem;
 }
@@ -55,7 +56,6 @@ body {
   position: relative;
   text-align: center;
 }
-
 /* =========================================================
    MARCO DE LAS FOTOS GLASS
    ========================================================= */
@@ -81,132 +81,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* =========================================================
-   BOTÓN PRINCIPAL comencemos
-   ========================================================= */
-.btn-clase {
-    margin-top: 20px;
-    padding: 14px 28px;
-    border-radius: 20px;
-    background: rgb(0, 0, 0);
-    color: #ffffff;
-    font-weight: 600;
-    display: inline-block;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-
-
-/* /////////////////PAGINA2 Grid de productos//////////////////////// */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* Cada tarjeta de producto */
-.product-card {
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover {
-  transform: scale(1.02);
-}
-
-/* Imagen del producto */
-.product-img {
-  position: relative;
-}
-
-.product-img img {
-  width: 100%;
-  display: block;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Navegación de imágenes */
-.nav-icons {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  padding: 0 10px;
-  pointer-events: none;
-}
-
-.nav-icons span {
-  pointer-events: all;
-  cursor: pointer;
-  background: rgba(0,0,0,0.3);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-/* Información del producto */
-.product-info {
-  padding: 10px;
-  text-align: center;
-}
-
-.product-info .description {
-  font-size: 0.9rem;
-}
-
-.product-info .price {
-  font-weight: bold;
-  margin-top: 2px;
-}
-
-/* PAGE 3 */
-.page3 {
-  padding: 30px 20px;
-}
-
-.page3 .promotions {
-  text-align: center;
-}
-/* =========================================================
-   MARCO DE LAS FOTOS GLASS
-   ========================================================= */
-.card {
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border-radius: 40px;
-    padding: 45px 40px;
-    margin: 40px auto;
-    border: 0.9px solid rgba(0, 0, 0, 0.65);
-}
-
-.card > * + * {
-    margin-top: 18px;
-}
-
-.card ol {
-    padding-left: 18px;
-}
-
-.card li {
-    margin-bottom: 10px;
-}
-
-/* Aplicar glass también a las imágenes de productos */
-.product-card .product-img {
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border-radius: 20px;
-    border: 0.9px solid rgba(0, 0, 0, 0.4);
-    padding: 10px;
-    margin-bottom: 15px;
-}
 /* ===========================
    MODAL HAMBURGUESA SLIDE
    =========================== */
@@ -252,208 +126,774 @@ body {
         width: 90%;
     }
 }
-/* ===============================
-   PRODUCT MODAL
-   =============================== */
-.product-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
+
+
+
+
+/* =========================================
+   PRODUCT INFO · alineado con la ventanita
+   ========================================= */
+
+.page-2 .product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra imagen y texto */
+  gap: 8px; /* espacio entre imagen y texto */
+  max-width: 250px; /* igual que el contenedor de la imagen */
+  margin: 0 auto 20px; /* margen inferior para separar productos */
 }
 
-.product-modal.active {
-    display: flex;
+.page-2 .product-info {
+  text-align: center;
+  width: 100%; /* ocupa el ancho de la ventanita */
 }
 
-.product-modal-content {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border-radius: 24px;
-    padding: 20px;
-    width: 90%;
-    max-width: 900px;
-    position: relative;
+.page-2 .product-info .description {
+  font-size: 0.85rem; /* tamaño proporcional al contenedor pequeño */
+  margin: 4px 0;
+  color: #333;
 }
 
-.close-modal {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    font-size: 1.5rem;
-    cursor: pointer;
+.page-2 .product-info .price {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #000;
+  margin: 2px 0;
 }
 
-.modal-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-
-/* Imagen */
-.modal-image {
-    position: relative;
-}
-
-.modal-image img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 16px;
-}
-
-.modal-image .nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 8px 12px;
-    background: rgba(255,255,255,0.7);
-    border-radius: 50%;
-}
-
-.modal-image .prev { left: 10px; }
-.modal-image .next { right: 10px; }
-
-/* Info */
-.modal-info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.sizes span {
-    display: inline-block;
-    margin-right: 8px;
-    padding: 6px 12px;
-    border: 1px solid rgba(0,0,0,0.4);
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.sizes span.active {
-    background: rgba(0,0,0,0.1);
-}
-
-.price {
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-#addToCart {
-    padding: 10px;
-    border-radius: 12px;
-    border: 1px solid rgba(0,0,0,0.4);
-    background: transparent;
-    cursor: pointer;
-}
-
-.info {
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-/* Mobile */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .modal-layout {
-        grid-template-columns: 1fr;
+  .page-2 .product-card {
+    max-width: 200px;
+    gap: 6px;
+  }
+  .page-2 .product-info .description {
+    font-size: 0.75rem;
+  }
+  .page-2 .product-info .price {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-2 .product-card {
+    max-width: 150px;
+    gap: 4px;
+  }
+  .page-2 .product-info .description {
+    font-size: 0.65rem;
+  }
+  .page-2 .product-info .price {
+    font-size: 0.7rem;
+  }
+}
+
+/* ----------- Ajustes para pantallas grandes (web) ----------- */
+@media (min-width: 1525px) {
+    .card {
+        max-width: 350px;
+        padding: 30px 25px;
+        border-radius: 30px;
+    }
+}
+
+/* ----------- Tablets verticales ----------- */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .card {
+        max-width: 300px;
+        padding: 25px 20px;
+        border-radius: 25px;
     }
 }
 
 
 
-
-
-/* =========================
-   FOOTER
-   ========================= */
-.footer {
-  width: 100%;
-  padding: 16px;
+/* =========================================================
+   BOTÓN PRINCIPAL comencemos
+   ========================================================= */
+.btn-clase {
+    margin-top: 20px;
+    padding: 14px 28px;
+    border-radius: 40px;
+    background: rgb(0, 0, 0);
+    color: #ffffff;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.hamburger-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  justify-content: center;
-  gap: 24px;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
+  flex-direction: column;
+  gap: 14px;
 }
 
-.footer-link {
-  background: none;
-  border: none;
-  font-size: 0.9rem;
+.hamburger-menu li {
+  font-size: 1rem;
   letter-spacing: 0.4px;
   cursor: pointer;
-  color: #111;
 }
 
-.footer-link:hover {
-  opacity: 0.6;
-}
-
-/* =========================
-   MODAL OVERLAY
-   ========================= */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-/* =========================
-   MODAL BOX
-   ========================= */
-.modal-box {
-  background: #fff;
-  width: 90%;
-  max-width: 420px;
-  padding: 32px;
-  border-radius: 16px;
-  position: relative;
-  animation: fadeUp 0.25s ease;
-}
-
-/* =========================
-   CLOSE BUTTON
-   ========================= */
-.modal-close {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-}
-
-/* =========================
-   CONTENT
-   ========================= */
-.modal-content {
+.menu-title {
+  font-weight: 600;
   font-size: 0.95rem;
-  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(0,0,0,0.1);
+  margin: 6px 0;
+}
+
+
+/* =========================================
+   PAGE 2 · PRODUCTOS 9:16 (versión más pequeña)
+   ========================================= */
+
+.page-2 .product-img {
+  position: relative;
+  width: 100%;
+  max-width: 250px; /* ancho máximo más pequeño */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 15px; /* un poco más pequeño que antes */
+}
+
+/* Track horizontal */
+.page-2 .image-track {
+  display: flex;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+/* IMÁGENES 9:16 - ocupan toda la ventana del contenedor */
+.page-2 .image-track img {
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Navegación */
+.page-2 .nav-icons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.page-2 .nav-icons span {
+  pointer-events: auto;
+  background: rgba(255,255,255,0.8);
+  font-size: 1.4rem;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  user-select: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .page-2 .product-img {
+    max-width: 200px;
+  }
+  .page-2 .nav-icons span {
+    font-size: 1rem;
+    padding: 3px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-2 .product-img {
+    max-width: 150px;
+  }
+  .page-2 .nav-icons span {
+    font-size: 0.9rem;
+    padding: 2px 4px;
+  }
+}
+/* Contenedor de productos: grid adaptativo */
+.page-2 .products-list {
+  display: grid;
+  gap: 16px;
+  padding: 10px;
+
+  /* Desktop horizontal: 2 columnas */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Desktop vertical grande / tablet vertical: 4 columnas */
+@media (min-width: 768px) and (orientation: portrait) {
+  .page-2 .products-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Móvil pequeño: 2 columnas */
+@media (max-width: 480px) {
+  .page-2 .products-list {
+    grid-template-columns: repeat(2, 1fr); /* ahora 2 por fila */
+    gap: 12px;
+  }
+}
+
+/* Ajustes para product-card */
+.page-2 .product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  width: 100%;      /* ocupa todo el ancho disponible dentro del grid */
+  max-width: unset;  /* eliminamos el max-width que rompe el grid */
+  margin: 0;         /* eliminamos margin: auto */
+}
+
+/* Imagen y info */
+.page-2 .product-img img {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.page-2 .product-info {
   text-align: center;
 }
 
-/* =========================
-   ANIMATION
-   ========================= */
-@keyframes fadeUp {
-  from {
+.page-2 .product-info .description {
+  font-size: 0.8rem;
+  color: #333;
+  margin: 2px 0;
+}
+
+.page-2 .product-info .price {
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin: 0;
+  color: #000;
+}
+
+/* =========================================================
+   FOOTER 16:9 RESPONSIVO
+   ========================================================= */
+.page-footer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto 0;
+  position: relative;
+
+  aspect-ratio: 12 / 5;
+  max-height: 380px; /* evita que sea enorme en desktop */
+  min-height: 220px; /* evita que se aplaste */
+
+  background: rgb(255, 255, 255);
+  border-radius: 24px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+}
+/* =========================================================
+   GLASS FOOTER
+   ========================================================= */
+.page-footer .footer-content {
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  border: 1px solid rgb(0, 0, 0);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 24px;
+}
+/* =========================================
+   AJUSTE SOLO DESKTOP
+   ========================================= */
+@media (min-width: 1200px) {
+
+  .page-footer {
+    aspect-ratio: 16 / 6;   /* menos alto, más elegante en web */
+    max-height: 420px;      /* que respire mejor */
+    padding: 0;             /* quitamos padding que encoge */
+  }
+
+  .page-footer .footer-content {
+    border-radius: 24px;    /* igual que el contenedor */
+    padding: 0;
+  }
+
+  .footer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+}
+.custom-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+
+  z-index: 999;
+}
+
+.custom-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.custom-modal-content {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.footer-signature {
+  width: 100%;
+  text-align: center;
+  margin: 20px auto 40px;
+}
+
+.footer-signature p {
+  font-size: 0.85rem;
+  color: #8b8b8b50;
+}
+
+
+/* =========================================================
+   MODAL OPCIONES
+   ========================================================= */
+.modal-opciones {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-opciones.activo {
+    display: flex;
+}
+
+.modal-contenido {
+    background: linear-gradient(
+        180deg,
+        rgba(25,35,50,0.85),
+        rgba(20,30,45,0.75)
+    );
+    backdrop-filter: blur(28px) saturate(140%);
+    border-radius: 22px;
+    padding: 26px 22px;
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    transform: translateY(28px) scale(0.94);
     opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
+    transition:
+        transform .55s cubic-bezier(.34,1.56,.64,1),
+        opacity .35s ease;
+}
+
+.modal-opciones.activo .modal-contenido {
+    transform: translateY(0) scale(1);
     opacity: 1;
-    transform: translateY(0);
-  }
+}
+
+
+
+
+/* =========================================================
+   MODAL COMENCEMOS
+   ========================================================= */
+
+.modal-beneficio {
+    padding-top: 34px;
+}
+
+/* Imagen circular superior */
+.beneficio-preview {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.beneficio-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===============================
+   TEXTO BENEFICIOS · AJUSTE PRO
+   =============================== */
+
+/* Título */
+.beneficio-texto strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    text-align: center;        /* centra título */
+    letter-spacing: 0.3px;    /* look pro */
+}
+
+/* Lista */
+.beneficio-lista {
+    text-align: left;          /* mantiene lectura natural */
+    margin-top: 10px;
+    max-width: 420px;          /* evita texto muy ancho */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Items */
+.beneficio-lista li {
+    font-size: 0.95rem;
+    line-height: 1.55;         /* mejor respiración */
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   MODAL AGENDA TU CLASE · ESPACIADO PRO
+   ========================================================= */
+
+.modal-opciones .modal-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 28px 24px 22px;
+}
+
+/* Título */
+.modal-opciones .modal-contenido h3 {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 18px;
+}
+
+/* Botones */
+.modal-opciones .opcion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0; /* quitar espacio entre icono y texto */
+
+    height: 54px;
+    margin-bottom: 14px; /* separación PRO entre botones */
+
+    border-radius: 16px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.modal-opciones .opcion:active {
+    transform: scale(0.97);
+    box-shadow:
+        0 6px 14px rgb(0, 0, 0),
+        inset 0 1px 0 rgb(255, 255, 255);
+}
+
+/* Colores */
+.opcion-calendly {
+    background: linear-gradient(180deg, #2b7cff, #1a5fd0);
+    font-size: 0; /* ocultar texto */
+}
+
+.opcion-whatsapp {
+    background: linear-gradient(180deg, #2fe06e, #1fa855);
+    font-size: 0; /* ocultar texto */
+}
+
+/* Cancelar */
+.modal-opciones .cerrar-modal {
+    margin-top: 6px;
+    padding-top: 6px;
+
+    background: transparent;
+    border: none;
+
+    font-size: 0.95rem;
+    color: #ffffff;
+
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+}
+
+.modal-opciones .cerrar-modal:hover {
+    opacity: 1;
+}
+
+
+/* Imagen circular más integrada */
+.beneficio-preview {
+    width: 118px;
+    height: 118px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.45),
+        inset 0 1px 1px rgba(255,255,255,0.12);
+}
+
+/* Título con peso pro */
+.beneficio-texto strong {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+/* Lista más limpia */
+.beneficio-lista {
+    margin-top: 14px;
+}
+
+.beneficio-lista li {
+    font-size: 0.94rem;
+    opacity: 0.92;
+}
+
+/* =========================================================
+   MODAL AGENDA TU CLASE · ESPACIADO PRO
+   ========================================================= */
+
+.modal-opciones .modal-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 28px 24px 22px;
+}
+
+/* Título */
+.modal-opciones .modal-contenido h3 {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 18px;
+}
+
+/* Botones */
+.modal-opciones .opcion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    height: 54px;
+    margin-bottom: 14px;
+
+    border-radius: 16px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    text-decoration: none; /* ❌ quitar subrayado */
+    color: #fff;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Aumentar tamaño del icono */
+.modal-opciones .opcion i {
+    font-size: 1.4rem;  /* 🔥 logo más grande */
+}
+
+/* Efecto activo */
+.modal-opciones .opcion:active {
+    transform: scale(0.97);
+    box-shadow:
+        0 6px 14px rgb(0, 0, 0),
+        inset 0 1px 0 rgb(255, 255, 255);
+}
+
+/* Colores */
+.opcion-calendly {
+    background: linear-gradient(180deg, #2b7cff, #1a5fd0);
+}
+
+.opcion-whatsapp {
+    background: linear-gradient(180deg, #2fe06e, #1fa855);
+}
+
+/* Cancelar */
+.modal-opciones .cerrar-modal {
+    margin-top: 6px;
+    padding-top: 6px;
+
+    background: transparent;
+    border: none;
+
+    font-size: 0.95rem;
+    color: #ffffff;
+
+    opacity: 0.75;
+    transition: opacity 0.15s ease;
+}
+
+.modal-opciones .cerrar-modal:hover {
+    opacity: 1;
+}
+
+/* =========================================================
+   CAPA DE BURBUJAS (DETRÁS DEL GLASS)
+   ========================================================= */
+#bubbles-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0; /* debajo del glass, encima del fondo */
+}
+
+/* Burbuja individual */
+.bubble {
+    position: fixed;
+    bottom: -60px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 30% 30%,
+        rgb(59, 159, 253),
+        rgb(255, 255, 255)
+    );
+    opacity: 0.6;
+    animation: bubbleFloat linear forwards;
+    filter: blur(0.5px);
+}
+
+/* Animación base */
+@keyframes bubbleFloat {
+    from {
+        transform: translateY(0) scale(0.9);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    to {
+        transform: translateY(-120vh) scale(3.3);
+        opacity: 0;
+    }
+}
+
+#bubbles-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1; /* detrás REAL */
+}
+/* =========================================================
+   COMENCEMOS · GRID 2x2 MÓVIL + TABLET VERTICAL
+   (NO altera HTML ni imágenes)
+   ========================================================= */
+
+/* Contenedor de los círculos */
+.beneficios {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+
+    justify-items: center;
+    align-items: center;
+
+    margin-top: 32px;
+}
+
+/* Cada círculo */
+.beneficio {
+    width: 120px;
+    aspect-ratio: 1 / 1; /* 🔥 círculo perfecto SIEMPRE */
+    height: auto;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagen dentro del círculo */
+.beneficio img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================================
+   TABLET VERTICAL → SIGUE 2x2
+   ========================================================= */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .beneficios {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .beneficio {
+        width: 130px;
+    }
 }
