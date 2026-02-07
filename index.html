@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Tienda de Playeras</title>
+  <title>Usa tu imaginacion</title>
   <link rel="stylesheet" href="css/estilos.css">
   <style>
    
@@ -17,9 +17,27 @@
   <header class="top-bar">
     <div class="hamburger">☰</div>
     <div class="logo">PRIZMOO</div>
-    <div class="cart">°°<span class="cart-count">°</span></div>
+    <div class="cart">°°°<span class="cart-count"></span></div>
   </header>
 
+<!-- MODAL HAMBURGUESA -->
+<div class="hamburger-modal" id="hamburgerModal">
+  <div class="hamburger-modal-content">
+    <span class="close-hamburger">&times;</span>
+
+    <nav class="hamburger-menu">
+      <ul>
+
+        <li data-open="modal-nuevos">Proximamente</li>
+        <li class="divider"></li>
+        <li data-open="modal-playeras">Proximamente</li>
+        <p class="price">...</p>
+        <li class="divider"></li>
+
+      </ul>
+    </nav>
+  </div>
+</div>
 
 <!-- =========================================
      PAGINAS 1
@@ -33,9 +51,8 @@
 <div class="product-img" style="position:relative; display:flex; overflow:hidden;">
   <!-- Contenedor de imágenes -->
   <div class="image-track" style="display:flex; transition: transform 0.3s ease;">
-    <img src="imagenes/cdmx1.jpeg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
-    <img src="imagenes/cdmx3.jpeg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
-    <img src="imagenes/cdmx2.jpeg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
+    <img src="img/CIUDAD2.jpeg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
+    <img src="img/DPDV5823.JPGg" alt="Ciudad de Mexico" style="width:100%; flex-shrink:0; margin-right:5px;">
   </div>
 
   <!-- Botones de navegación -->
@@ -46,12 +63,12 @@
 </div>
 
             </div>
-            <h1>UN VIAJE</h1>
-            <p class="subtitulo">FRAGMENTOS DE TIEMPO</p>
+            <h1>CUATRO PAREDES</h1>
+            <p class="subtitulo">EN UN VIAJE</p>
         </section>
 
         <div style="text-align:center">
-            <a href="#" id="goPage2" class="btn-clase">PROXIMAMENTE</a>
+            <a href="#" id="goPage2" class="btn-clase">Comencemos</a>
         </div>
 
         <div style="height: 5vh;"></div>
@@ -74,7 +91,7 @@
 .image-track img {
   flex-shrink: 0;
   width: 100%;           /* ocupa todo el contenedor */
-  aspect-ratio: 1 / 1;   /* fuerza proporción cuadrada tipo Instagram */
+  aspect-ratio: 2 / 2;   /* fuerza proporción cuadrada tipo Instagram */
   object-fit: cover;      /* mantiene el contenido centrado */
   margin-right: 3px;      /* separación entre imágenes */
   border-radius: 20px;     /* opcional, bordes suaves */
@@ -100,44 +117,128 @@
 
 .nav-icons span {
   pointer-events: all;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.09);
   color: black;
   font-size: 1.5rem;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background 0.2s;
 }
 
 .nav-icons span:hover {
-  background: rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.703);
 }
 </style>
 
 
-<!-- JS para navegar entre 5 imágenes -->
+<!-- FIRMA INFERIOR -->
+<div class="footer-signature">
+  <p>© 2026 @prizmoo — Todos los derechos reservados.</p>
+</div>
+
+  
+
+<!-- JS para navegar las 5 imágenes de cada producto solo en Page2 -->
 <script>
-const track = document.querySelector('.image-track');
-const images = document.querySelectorAll('.image-track img');
-let index = 0;
-const visibleCount = 1; // cuántas imágenes mostrar a la vez (puedes cambiar a 2 o 3 si quieres)
+document.querySelectorAll('.page-2 .product-card').forEach(card => {
+  const track = card.querySelector('.image-track');
+  const images = card.querySelectorAll('.image-track img');
+  const prev = card.querySelector('.prev');
+  const next = card.querySelector('.next');
+  let index = 0;
+  const visibleCount = 1; // cuántas imágenes visibles a la vez
 
-document.getElementById('prev-img').addEventListener('click', () => {
-  index = Math.max(index - 1, 0);
-  track.style.transform = `translateX(-${index * (images[0].clientWidth + 3)}px)`;
+  prev.addEventListener('click', e => {
+    e.stopPropagation();
+    index = Math.max(index - 1, 0);
+    track.style.transform = `translateX(-${index * (images[0].clientWidth + 3)}px)`;
+  });
+
+  next.addEventListener('click', e => {
+    e.stopPropagation();
+    index = Math.min(index + 1, images.length - visibleCount);
+    track.style.transform = `translateX(-${index * (images[0].clientWidth + 3)}px)`;
+  });
 });
+const modal = document.getElementById('productModal');
+const modalImg = document.getElementById('modalImg');
+const closeModal = document.querySelector('.close-modal');
 
-document.getElementById('next-img').addEventListener('click', () => {
-  index = Math.min(index + 1, images.length - visibleCount);
-  track.style.transform = `translateX(-${index * (images[0].clientWidth + 3)}px)`;
-});
-
+let currentImages = [];
+let imgIndex = 0;
+let cartCount = 0;
 </script>
 
+
+
+  <!-- =========================================
+       JS
+       ========================================= -->
+  <script>
+  
+// Seleccionamos elementos
+const hamburger = document.querySelector('.top-bar .hamburger');
+const hamburgerModal = document.getElementById('hamburgerModal');
+const closeHamburger = document.querySelector('.close-hamburger');
+
+// Abrir modal al tocar hamburguesa
+hamburger.addEventListener('click', e => {
+    e.stopPropagation(); // evitar que el click se propague y cierre el modal inmediatamente
+    hamburgerModal.classList.add('active');
+});
+
+// Cerrar modal al tocar X
+closeHamburger.addEventListener('click', () => {
+    hamburgerModal.classList.remove('active');
+});
+
+// Cerrar modal al tocar fuera del contenido o en cualquier parte de la pantalla
+document.addEventListener('click', e => {
+    if (hamburgerModal.classList.contains('active') && !hamburgerModal.contains(e.target) && e.target !== hamburger) {
+        hamburgerModal.classList.remove('active');
+    }
+});
+ </script>
+
+<script>
+
+// Cerrar modal al tocar la X
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Cerrar modal al tocar fuera del contenido
+modal.addEventListener('click', e => {
+  if (e.target === modal) modal.style.display = 'none';
+});
+</script>
+
+<script>
+document.querySelectorAll('.footer-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+
+    const modalName = link.dataset.modal;
+    const modal = document.getElementById(`modal-${modalName}`);
+
+    if (modal) modal.classList.add('active');
+  });
+});
+
+document.querySelectorAll('.modal-close').forEach(close => {
+  close.addEventListener('click', () => {
+    close.closest('.footer-modal').classList.remove('active');
+  });
+});
+
+/* Cerrar tocando fondo */
+document.querySelectorAll('.footer-modal').forEach(modal => {
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
+});
 </script>
 
 
 </body>
 </html>
-
-
